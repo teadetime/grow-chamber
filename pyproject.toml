@@ -8,7 +8,11 @@ packages = [{include = "grow_chamber"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+black = "^23.9.1"
+flake8 = "^6.1.0"
 
+[tool.black] 
+line-length = 75
 
 [build-system]
 requires = ["poetry-core"]
