@@ -1,9 +1,9 @@
 import datetime as dt
-
 import sqlite3
 import threading
 from time import sleep
 
+from api import app
 from constants import (
     DB_CTL_TBL,
     DB_LOG_TBL,
@@ -15,8 +15,7 @@ from constants import (
     DEFAULT_HUMIDITY_HIGH,
 )
 
-
-def database_setup() -> None:
+def db_setup() -> None:
     con = sqlite3.connect(DBNAME)
     cur = con.cursor()
 
@@ -106,18 +105,18 @@ def monitor() -> None:
             if state.humidity <= DEFAULT_HUMIDITY - DEFAULT_HUMIDITY_LOW:
                 state.humid_on = True
                 print("Turning Humidifier On!")
+
+        # Log the result
+        cur.execute(
+            f"INSERT INTO {DB_LOG_TBL} VALUES \
+            ('{dt.datetime.now()}', {DEFAULT_HUMIDITY}, \
+            {20.4}, {state.humid_on}, {state.fan_on});"
+        )
+        con.commit()
         sleep(3)
 
-
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return 'Hello world'
-
 if __name__ == "__main__":
-    database_setup()
+    db_setup()
     control_thread = threading.Thread(target=monitor, args=[])
     control_thread.start()
-    app.run(debug=True, use_reloader=False, port=8000, host='0.0.0.0')
+    app.run(debug=True, use_reloader=False, port=8000, host="0.0.0.0")
