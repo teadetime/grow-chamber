@@ -1,0 +1,6 @@
+DBNAME = "grow.db"
+DB_CTL_TBL = "control"
+DB_LOG_TBL = "log"
+
+DEFAULT_HUMIDITY = 92.
+DEFAULT_AIR_MIN = 45
