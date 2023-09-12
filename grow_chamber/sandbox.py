@@ -1,6 +1,7 @@
 import datetime as dt
 
 import sqlite3
+import threading
 from time import sleep
 
 from constants import (
@@ -108,6 +109,15 @@ def monitor() -> None:
         sleep(3)
 
 
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Hello world'
+
 if __name__ == "__main__":
     database_setup()
-    monitor()
+    control_thread = threading.Thread(target=monitor, args=[])
+    control_thread.start()
+    app.run(debug=True, use_reloader=False, port=8000, host='0.0.0.0')
