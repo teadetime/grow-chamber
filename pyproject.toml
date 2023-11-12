@@ -13,6 +13,8 @@ flake8 = "^6.1.0"
 flask = "^2.3.3"
 adafruit-blinka = "^8.22.2"
 peewee = "^3.16.3"
+rpi-gpio = "^0.7.1"
+adafruit-circuitpython-ahtx0 = "^1.0.19"
 
 [tool.black] 
 line-length = 75
