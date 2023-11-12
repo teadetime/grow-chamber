@@ -5,3 +5,6 @@ On Raspi
 2. `sudo apt-get install rpi.gpio`
 2. `sudo apt-get install git python3-distutils libffi-dev`
 3. Install poetry `curl -sSL https://install.python-poetry.org | python3 -`
+
+Clone repo:
+from `grow-chamber/` run `poetry install`
