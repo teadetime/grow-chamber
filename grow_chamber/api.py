@@ -1,67 +1,47 @@
+import json
+import datetime as dt
 from flask import Flask, jsonify, request
-import sqlite3
+from peewee import *
+from playhouse.shortcuts import model_to_dict, dict_to_model
 
-from constants import (
-    DB_CTL_TBL,
-    DB_LOG_TBL,
-    DBNAME,
-    DEFAULT_AIR_PRD,
-    DEFAULT_HUMIDITY,
-    DEFAULT_AIR_DURATION,
-    DEFAULT_HUMIDITY_LOW,
-    DEFAULT_HUMIDITY_HIGH,
-)
+from db import *
 
 app = Flask(__name__)
 
 
+@app.before_request
+def before_request():
+    db.connect()
+
+
+@app.after_request
+def after_request(response):
+    db.close()
+    return response
+
+
 @app.route("/")
 def index():
-    return "Hello world"
-
-
-incomes = [{"description": "salary", "amount": 5000}]
+    return "Mushroom Control"
 
 
 @app.route("/logs")
 def get_logs():
-    con = sqlite3.connect(DBNAME, check_same_thread=False)
-    cur = con.cursor()
-    logs = cur.execute(
-        f"SELECT * FROM {DB_LOG_TBL} ORDER BY timestamp DESC LIMIT 100"
-    ).fetchall()
-    cur.close()
-    con.close()
-    return jsonify(logs)
+    log = Log.select().order_by(Log.timestamp.desc())
+    return jsonify({"rows": [model_to_dict(l) for l in log]})
 
 
 @app.route("/controls")
 def get_controls():
-    con = sqlite3.connect(DBNAME, check_same_thread=False)
-    cur = con.cursor()
-    logs = cur.execute(
-        f"SELECT * FROM {DB_CTL_TBL} ORDER BY timestamp DESC LIMIT 100"
-    ).fetchall()
-    cur.close()
-    con.close()
-    return jsonify(logs)
+    control = Control.select().order_by(Control.timestamp.desc())
+    return jsonify({"rows": [model_to_dict(l) for l in control]})
 
 
 @app.route("/controls", methods=["POST"])
-def add_income():
+def add_control():
     json = request.get_json()
-    humidity = json["humidity"]
-    fan_period = json["fan_period"]
-    fan_duration = json["fan_duration"]
-    print(json.items())
-    con = sqlite3.connect(DBNAME, check_same_thread=False)
-    cur = con.cursor()
-    cur.execute(
-        f"INSERT INTO {DB_CTL_TBL} VALUES \
-            ('{dt.datetime.now()}', {humidity}, \
-            {fan_period}, {fan_duration});"
-    )
-    con.commit()
-    cur.close()
-    con.close()
+    json["timestamp"] = dt.datetime.now()
+    # TODO: add the timestamp here rather than from the request
+    new_control = dict_to_model(Control, json, ignore_unknown=True)
+    new_control.save()
     return "", 204

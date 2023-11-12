@@ -15,6 +15,7 @@ from constants import (
     DEFAULT_HUMIDITY_HIGH,
 )
 
+
 def db_setup() -> None:
     con = sqlite3.connect(DBNAME)
     cur = con.cursor()
@@ -114,6 +115,7 @@ def monitor() -> None:
         )
         con.commit()
         sleep(3)
+
 
 if __name__ == "__main__":
     db_setup()

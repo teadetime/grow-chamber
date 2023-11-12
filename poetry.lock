@@ -2,14 +2,14 @@
 
 [[package]]
 name = "adafruit-blinka"
-version = "8.22.2"
+version = "8.22.4"
 description = "CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython."
 category = "main"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "Adafruit-Blinka-8.22.2.tar.gz", hash = "sha256:a6cbdeb6130fba2c2330ef27619977fa1d035df43b43801491b25a9ae61c9178"},
-    {file = "Adafruit_Blinka-8.22.2-py3-none-any.whl", hash = "sha256:4dca7d12160ef349094038dd7ef17f66ea6723164e4f21f8ed1ba4ff20606269"},
+    {file = "Adafruit-Blinka-8.22.4.tar.gz", hash = "sha256:2cc5e301439a0381b7cf8149fba8ab9c9b329eebf20322642f53411009d2c1bb"},
+    {file = "Adafruit_Blinka-8.22.4-py3-none-any.whl", hash = "sha256:555ff3414ca776b18db85d5e75bba049f689c1d8c863bb6230e1ddde6efbefc8"},
 ]
 
 [package.dependencies]
@@ -36,14 +36,14 @@ adafruit-circuitpython-typing = "*"
 
 [[package]]
 name = "adafruit-circuitpython-requests"
-version = "2.0.1"
+version = "2.0.2"
 description = "A requests-like library for web interfacing"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "adafruit-circuitpython-requests-2.0.1.tar.gz", hash = "sha256:904bf113261ce78eaeebb7cf5209db318cec073a93c3aeeccac36606d842b6d7"},
-    {file = "adafruit_circuitpython_requests-2.0.1-py3-none-any.whl", hash = "sha256:6fa26dd0eefd2a2df7cc4ddf38cf0fdf1c3307ba95a9ed0255d5559f1d28bd44"},
+    {file = "adafruit-circuitpython-requests-2.0.2.tar.gz", hash = "sha256:fec34d21be9d721a44bd1471e3651630eb7d394ce806de2fb39536dac73408aa"},
+    {file = "adafruit_circuitpython_requests-2.0.2-py3-none-any.whl", hash = "sha256:91e7634cd223ee3adf22ca3cf6e8f34713a56a3809031f37ec31b90a3a9f503f"},
 ]
 
 [package.dependencies]
@@ -69,14 +69,14 @@ typing-extensions = ">=4.0,<5.0"
 
 [[package]]
 name = "adafruit-platformdetect"
-version = "3.52.0"
+version = "3.52.3"
 description = "Platform detection for use by libraries like Adafruit-Blinka."
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Adafruit-PlatformDetect-3.52.0.tar.gz", hash = "sha256:472740c88cd645543eff10953ed6781d0ede087f1cc5e1d6d578c4ba95a502a7"},
-    {file = "Adafruit_PlatformDetect-3.52.0-py3-none-any.whl", hash = "sha256:0e85481fb3939e530470eb7759c81dc8559e0a3ad06faffc2c325cc695235f1e"},
+    {file = "Adafruit-PlatformDetect-3.52.3.tar.gz", hash = "sha256:e49127b13bd8e0f800b9aa08c931eb88954950f00731811382a6e102e00f25c2"},
+    {file = "Adafruit_PlatformDetect-3.52.3-py3-none-any.whl", hash = "sha256:2d250e40d6705adbb2cb9f61c943c30db69571516f151bf03a7e159273f70ce2"},
 ]
 
 [[package]]
@@ -366,6 +366,17 @@ files = [
 ]
 
 [[package]]
+name = "peewee"
+version = "3.16.3"
+description = "a little orm"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "peewee-3.16.3.tar.gz", hash = "sha256:12b30e931193bc37b11f7c2ac646e3f67125a8b1a543ad6ab37ad124c8df7d16"},
+]
+
+[[package]]
 name = "platformdirs"
 version = "3.10.0"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
@@ -462,14 +473,14 @@ files = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.7.1"
-description = "Backported and Experimental Type Hints for Python 3.7+"
+version = "4.8.0"
+description = "Backported and Experimental Type Hints for Python 3.8+"
 category = "main"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "typing_extensions-4.7.1-py3-none-any.whl", hash = "sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36"},
-    {file = "typing_extensions-4.7.1.tar.gz", hash = "sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2"},
+    {file = "typing_extensions-4.8.0-py3-none-any.whl", hash = "sha256:8f92fc8806f9a6b641eaa5318da32b44d401efaac0f6678c9bc448ba3605faa0"},
+    {file = "typing_extensions-4.8.0.tar.gz", hash = "sha256:df8e4339e9cb77357558cbdbceca33c303714cf861d1eef15e1070055ae8b7ef"},
 ]
 
 [[package]]
@@ -493,4 +504,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "9d7cd2f06949396cce8999eb47c69c77edf799ab09d24ea96085610ca929dded"
+content-hash = "751c0827fdfcda35348309761ccea89b48d612de0eb66a7b9354459caf4c2885"

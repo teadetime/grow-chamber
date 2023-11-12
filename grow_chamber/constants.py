@@ -1,7 +1,4 @@
 DBNAME = "grow.db"
-DB_CTL_TBL = "control"
-DB_LOG_TBL = "log"
-
 DEFAULT_HUMIDITY: float = 92.0
 DEFAULT_HUMIDITY_LOW: float = 2.0
 DEFAULT_HUMIDITY_HIGH: float = 2.0
